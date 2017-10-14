@@ -6,6 +6,7 @@
 - name: Install php
   apt: name={{ item }}
   with_items:
+    - php7.0-fpm
     - php7.0-cli
     - php7.0-xml
     # Laravel requires the following

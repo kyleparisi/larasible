@@ -1,6 +1,6 @@
 ---
 
-- hosts: localhost
+- hosts: all,localhost
   become: true
   roles:
     - { role: php, tags: php }
