@@ -1,0 +1,21 @@
+---
+
+- name: Install nginx
+  apt:
+    name: nginx
+
+- name: Sync virtual host files
+  synchronize: src=sites-available dest=/etc/nginx
+  notify:
+    - restart nginx
+
+- name: Make default folder
+  file: path=/var/www/default state=directory
+
+- name: Link sites-available virtual host to be enabled
+  file: src=/etc/nginx/sites-available/default dest=/etc/nginx/sites-enabled/default state=link
+  notify:
+    - restart nginx
+
+- name: test nginx
+  shell: nginx -t

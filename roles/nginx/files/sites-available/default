@@ -1,0 +1,39 @@
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  server_name _;
+
+  root /var/www/default/public;
+  index index.php index.html;
+
+  # bots and curl users
+  if ($http_user_agent = "") {
+    return 403;
+  }
+
+  if ($scheme = http) {
+    return 301 https://$server_name$request_uri;
+  }
+
+  location /nginx_status {
+    stub_status on;
+    access_log   off;
+    # add your ip address here
+    # allow x.x.x.x;
+    deny all;
+  }
+
+  location / {
+    try_files $uri $uri/ /index.php$is_args$args;
+  }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_param   APPLICATION_ENV  production;
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+  }
+
+  error_log /var/log/nginx/error.log;
+  access_log /var/log/nginx/access.log;
+}

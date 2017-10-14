@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  become: true
+  roles:
+    - { role: php, tags: php }
+    - { role: nginx, tags: nginx }
+    - { role: iptables, tags: iptables }

@@ -1,0 +1,11 @@
+---
+# Manage IP Tables for server
+
+- name: Install iptables-persistent
+  action: "{{ ansible_pkg_mgr }} pkg=iptables-persistent state=present"
+
+# - name: Block specific IPs
+#   iptables: chain=INPUT source="{{ item }}" jump=DROP
+#   become: yes
+#   with_items:
+#     - x.x.x.x
