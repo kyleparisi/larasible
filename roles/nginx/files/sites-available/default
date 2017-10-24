@@ -42,6 +42,8 @@ server {
 
   location ~ \.php$ {
     include snippets/fastcgi-php.conf;
+    # Mitigate https://httpoxy.org/ vulnerabilities
+    fastcgi_param   HTTP_PROXY "";
     fastcgi_param   APPLICATION_ENV  production;
     fastcgi_pass unix:/run/php/php7.0-fpm.sock;
   }
