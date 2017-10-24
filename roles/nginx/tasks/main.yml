@@ -4,6 +4,11 @@
   apt:
     name: nginx
 
+- name: Sync conf.d files
+  copy: src=nginx.conf dest=/etc/nginx
+  notify:
+    - restart nginx
+
 - name: Sync virtual host files
   synchronize: src=sites-available dest=/etc/nginx
   notify:
