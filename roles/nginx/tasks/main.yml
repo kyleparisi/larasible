@@ -4,7 +4,7 @@
   apt:
     name: nginx
 
-- name: Sync conf.d files
+- name: Sync nginx.conf file
   copy: src=nginx.conf dest=/etc/nginx
   notify:
     - restart nginx
