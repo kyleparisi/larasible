@@ -1,26 +1,33 @@
 ---
 
-- name: Install nginx
+- name: add apt-key
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+
+- apt_repository:
+    repo: deb http://nginx.org/packages/ubuntu/ xenial nginx
+
+- apt_repository:
+    repo: deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+
+- name: apt install nginx -y
   apt:
     name: nginx
+  notify:
+    - nginx restart
 
 - name: Sync nginx.conf file
   copy: src=nginx.conf dest=/etc/nginx
   notify:
-    - restart nginx
+    - nginx reload
 
 - name: Sync virtual host files
-  synchronize: src=sites-available dest=/etc/nginx
+  synchronize: src=conf.d dest=/etc/nginx
   notify:
-    - restart nginx
+    - nginx reload
 
 - name: Make default folder
   file: path=/var/www/default state=directory
-
-- name: Link sites-available virtual host to be enabled
-  file: src=/etc/nginx/sites-available/default dest=/etc/nginx/sites-enabled/default state=link
-  notify:
-    - restart nginx
 
 - name: test nginx
   shell: nginx -t
