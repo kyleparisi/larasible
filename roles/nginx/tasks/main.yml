@@ -21,13 +21,18 @@
   notify:
     - nginx reload
 
+- name: Sync fastcgi_params file
+  copy: src=fastcgi_params dest=/etc/nginx
+  notify:
+    - nginx reload
+
 - name: Sync virtual host files
-  synchronize: src=conf.d dest=/etc/nginx
+  copy: src=conf.d dest=/etc/nginx
   notify:
     - nginx reload
 
 - name: Make default folder
-  file: path=/var/www/default state=directory owner=kyle group=kyle
+  file: path=/var/www/default/ state=directory
 
 - name: test nginx
   shell: nginx -t
