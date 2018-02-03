@@ -27,7 +27,7 @@
     - nginx reload
 
 - name: Make default folder
-  file: path=/var/www/default state=directory
+  file: path=/var/www/default state=directory owner=kyle group=kyle
 
 - name: test nginx
   shell: nginx -t
