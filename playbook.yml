@@ -6,3 +6,4 @@
     - { role: php, tags: php }
     - { role: nginx, tags: nginx }
     - { role: iptables, tags: iptables }
+    - { role: nodejs, tags: nodejs }
