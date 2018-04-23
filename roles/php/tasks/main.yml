@@ -58,6 +58,6 @@
     dest: /etc/php/7.2/fpm/pool.d/www.conf
     section: www
     option: clear_env
-    value: no
+    value: "no"
     backup: yes
 
