@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-RUN apt update && apt install sudo git -y
+RUN apt-get update && apt-get install sudo git -y
 ADD . larasible
 WORKDIR larasible
 RUN ./provision.sh
