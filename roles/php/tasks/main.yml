@@ -60,4 +60,6 @@
     option: clear_env
     value: "no"
     backup: yes
+  notify:
+    - php-fpm restart
 
