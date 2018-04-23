@@ -53,3 +53,11 @@
     - php7.2-zip
     - composer
 
+- name: clear_env=no on php-fpm workers
+  ini_file:
+    path: /etc/php/7.2/fpm/pool.d/www.conf
+    section: www
+    option: clear_env
+    value: no
+    backup: yes
+
