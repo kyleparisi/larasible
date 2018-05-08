@@ -6,7 +6,7 @@ Note: Not intending to be all inclusive.  This is however intending to be basic,
 
 ## Usage
 
-Clone this repo to the server that needs provisioning.  
+Clone this repo to an ubuntu server that needs provisioning.  
 
 ```bash
 ./provision.sh
@@ -20,4 +20,10 @@ If you want to use docker, do the following.
 
 ```bash
 APP_DIR=xxx docker-compose up -d
+```
+
+### Other commands
+
+```bash
+APP_DIR=xxx ./composer-install.sh install
 ```
