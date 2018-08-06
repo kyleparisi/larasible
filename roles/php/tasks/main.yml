@@ -8,7 +8,6 @@
     - php{{ php.version }}-fpm
     - php{{ php.version }}-cli
     - php{{ php.version }}-xml
-    # Laravel requires the following
     - php{{ php.version }}-opcache
     - php{{ php.version }}-pdo
     - php{{ php.version }}-xml
@@ -27,6 +26,7 @@
     - php{{ php.version }}-intl
     - php{{ php.version }}-json
     - php{{ php.version }}-mbstring
+    - php{{ php.version }}-mcrypt
     - php{{ php.version }}-mysqli
     - php{{ php.version }}-pgsql
     - php{{ php.version }}-phar
