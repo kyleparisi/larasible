@@ -25,5 +25,5 @@ APP_DIR=xxx docker-compose up -d
 ### Other commands
 
 ```bash
-APP_DIR=xxx ./composer-install.sh install
+APP_DIR=xxx ./composer.sh install
 ```

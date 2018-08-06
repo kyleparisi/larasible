@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ -z "$APP_DIR" ]] && APP_DIR=$(PWD)
+
 docker run --rm --interactive --tty \
     --user $(id -u):$(id -g) \
     --volume $APP_DIR:/var/www/default \
