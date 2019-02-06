@@ -1,4 +1,4 @@
-- name: Add ppa:ondrej/php for 7.1/7.2
+- name: Add ppa:ondrej/php for 7.x
   apt_repository:
     repo: ppa:ondrej/php
 
