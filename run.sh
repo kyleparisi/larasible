@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# Start NGINX 
-/etc/init.d/nginx start
+# Start NGINX if it exists
+if [ -f "/etc/init.d/nginx" ]; then
+    /etc/init.d/nginx start
+fi
 
-# Start PHP-FPM (any PHP version)
+# Start PHP-FPM (any PHP version) if it exists
 current_version=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1,3)
 formatted_version=${current_version:0:1}.${current_version:1:2}
 
