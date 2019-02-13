@@ -57,10 +57,10 @@
   notify:
     - php-fpm restart
 
-- name: link php-fpm to php-fpm{{ php.version }}
+- name: link php-fpm to php{{ php.version }}-fpm
   alternatives:
-    link: /usr/bin/php-fpm
+    link: /etc/init.d/php-fpm
     name: php-fpm
-    path: /usr/sbin/php-fpm{{ php.version }}
+    path: /etc/init.d/php{{ php.version }}-fpm
     priority: 1
 
