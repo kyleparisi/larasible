@@ -3,8 +3,10 @@
     repo: ppa:ondrej/php
 
 - name: Install php
-  apt: name={{ item }}
-  with_items:
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
     - php{{ php.version }}-fpm
     - php{{ php.version }}-cli
     - php{{ php.version }}-xml
