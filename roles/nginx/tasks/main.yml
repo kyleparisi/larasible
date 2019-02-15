@@ -5,10 +5,10 @@
     url: http://nginx.org/keys/nginx_signing.key
 
 - apt_repository:
-    repo: deb http://nginx.org/packages/ubuntu/ xenial nginx
+    repo: deb http://nginx.org/packages/ubuntu/ bionic nginx
 
 - apt_repository:
-    repo: deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+    repo: deb-src http://nginx.org/packages/ubuntu/ bionic nginx
 
 - name: apt install nginx -y
   apt:

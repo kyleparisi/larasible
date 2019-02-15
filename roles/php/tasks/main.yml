@@ -3,8 +3,10 @@
     repo: ppa:ondrej/php
 
 - name: Install php
-  apt: name={{ item }}
-  with_items:
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
     - php{{ php.version }}-fpm
     - php{{ php.version }}-cli
     - php{{ php.version }}-xml
@@ -57,10 +59,10 @@
   notify:
     - php-fpm restart
 
-- name: link php-fpm to php-fpm{{ php.version }}
+- name: link php-fpm to php{{ php.version }}-fpm
   alternatives:
-    link: /usr/bin/php-fpm
+    link: /etc/init.d/php-fpm
     name: php-fpm
-    path: /usr/sbin/php-fpm{{ php.version }}
+    path: /etc/init.d/php{{ php.version }}-fpm
     priority: 1
 
