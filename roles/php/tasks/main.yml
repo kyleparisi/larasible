@@ -66,3 +66,10 @@
     path: /etc/init.d/php{{ php.version }}-fpm
     priority: 1
 
+- name: link php-fpm to php{{ php.version }}-fpm
+  alternatives:
+    link: /usr/sbin/php-fpm
+    name: php-fpm
+    path: /usr/sbin/php-fpm{{ php.version }}
+    priority: 1
+
