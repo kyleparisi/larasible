@@ -59,12 +59,11 @@
   notify:
     - php-fpm restart
 
-- name: link php-fpm to php{{ php.version }}-fpm
-  alternatives:
-    link: /etc/init.d/php-fpm
-    name: php-fpm
-    path: /etc/init.d/php{{ php.version }}-fpm
-    priority: 1
+- name: link init.d php-fpm to php{{ php.version }}-fpm
+  file:
+    dest: /etc/init.d/php-fpm
+    src: /etc/init.d/php{{ php.version }}-fpm
+    state: link
 
 - name: link php-fpm to php{{ php.version }}-fpm
   alternatives:
