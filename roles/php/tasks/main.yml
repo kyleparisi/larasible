@@ -49,6 +49,16 @@
     - php{{ php.version }}-zip
     - composer
 
+- name: error_log to stderr
+  ini_file:
+    dest: /etc/php/{{ php.version }}/fpm/php.ini
+    section: PHP
+    option: error_log
+    value: "/proc/1/fd/2"
+    backup: yes
+  notify:
+    - php-fpm restart
+
 - name: clear_env=no on php-fpm workers
   ini_file:
     dest: /etc/php/{{ php.version }}/fpm/pool.d/www.conf
